@@ -10,10 +10,10 @@ public class Main {
     public static int[] pick_GaMa;
     public static int[][] location_GaMa = {{0,0},{0,1},{1,0},{1,1}};  //가마의 위치
     public static int[][] move_GaMa =
-                {{0,0},{0,1},{0,2},
-                          {1,0},{1,1},{1,2},
-                          {2,0},{2,1},{2,2},
-                          {3,0},{3,1},{3,2}};  //가마의 옮길 위치, 방향
+                {{0,0},{0,1},{0,2},{0,3},
+                          {1,0},{1,1},{1,2},{1,3},
+                          {2,0},{2,1},{2,2},{2,3},
+                          {3,0},{3,1},{3,2},{3,3},};  //가마의 옮길 위치, 방향
     public static int[] choice;
     public static int answer = 0;
     public static int[] pick_dfs;
@@ -162,6 +162,13 @@ public class Main {
                     int efect = materials[num][i][j].efect;
                     char element = materials[num][i][j].element;
                     matearr[n][m] = new Material(efect,element);
+                }
+            }
+        }
+        else if(direct == 3){
+            for(int i=0;i<4 ; i++){
+                for(int j=0;j<4;j++){
+                    matearr[i][j] = new Material(materials[num][i][j].efect,materials[num][i][j].element);
                 }
             }
         }
