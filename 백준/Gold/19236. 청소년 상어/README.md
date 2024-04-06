@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 2020 KB, 시간: 0 ms
+메모리: 11732 KB, 시간: 80 ms
 
 ### 분류
 
@@ -12,7 +12,7 @@
 
 ### 제출 일자
 
-2022년 10월 8일 17:12:29
+2024년 4월 6일 23:18:20
 
 ### 문제 설명
 
@@ -38,7 +38,7 @@
 
 <p>이제 물고기가 이동해야 한다. 1번 물고기의 방향은 ↗이다. ↗ 방향에는 칸이 있고, 15번 물고기가 들어있다. 물고기가 있는 칸으로 이동할 때는 그 칸에 있는 물고기와 위치를 서로 바꿔야 한다. 따라서, 1번 물고기가 이동을 마치면 <그림 3>과 같아진다.</p>
 
-<p style="text-align: center;"><img alt="" src="" style="width: 326px; height: 331px;"></p>
+<p style="text-align: center;"><img alt="" src="https://upload.acmicpc.net/75315b3c-ee04-4ae8-9422-5b1137f86117/-/preview/" style="width: 326px; height: 331px;"></p>
 
 <p style="text-align: center;"><그림 3></p>
 
