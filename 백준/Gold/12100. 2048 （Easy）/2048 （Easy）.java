@@ -43,10 +43,7 @@ public class Main {
     public static int[][] copyArr(int[][] map){
         int[][] copyMap = new int[N][N];
         for(int i=0;i<N;i++){
-            for(int j=0;j<N;j++){
-                copyMap[i][j]= map[i][j];
-            }
-//            System.arraycopy(map[i], 0, copyMap[i], 0, N);
+            System.arraycopy(map[i], 0, copyMap[i], 0, N);
         }
         return copyMap;
     }
