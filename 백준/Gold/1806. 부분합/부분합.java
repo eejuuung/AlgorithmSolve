@@ -15,11 +15,6 @@ public class Main {
         stz = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
             map[i] = Long.parseLong(stz.nextToken());
-
-            if (map[i] == S) {
-                System.out.println("1");
-                return;
-            }
         }
 
         int answer = Integer.MAX_VALUE;
