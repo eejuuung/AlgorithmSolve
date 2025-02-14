@@ -51,7 +51,6 @@ public class Main {
 
         for (int i = 0; i < tc; i++) {
             int cnt = Integer.parseInt(br.readLine());
-            sb = new StringBuilder();
             hMap = new HashMap<>();
             friendCount = 0;
             fCount = new int[200005];
@@ -60,10 +59,8 @@ public class Main {
                 stz = new StringTokenizer(br.readLine());
                 friendNetwork(stz.nextToken(), stz.nextToken());
             }
-
-            System.out.print(sb);
         }
-
+        System.out.print(sb);
     }
 
 }
