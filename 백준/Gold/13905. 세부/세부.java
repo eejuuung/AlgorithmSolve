@@ -13,24 +13,27 @@ public class Main {
         }
     }
 
-    public static int N, M;
+    public static int N, M, S, E;
     public static ArrayList<Node>[] graph;
     public static long[] dist;
+    public static final Comparator<Node> COMP = (a, b) -> Long.compare(b.cost, a.cost);
 
     public static void dijkstra(int start) {
-        Queue<Node> que = new PriorityQueue<>(Comparator.comparing((Node n) -> n.cost).reversed());
-        dist[start] = Integer.MAX_VALUE;
+        Queue<Node> que = new PriorityQueue<>(COMP);
+        dist[start] = Long.MAX_VALUE;
         que.add(new Node(start, dist[start]));
 
         while (!que.isEmpty()) {
             Node now = que.poll();
 
-            if (now.cost < dist[now.v]) // dist에 지금 cost가 아닌 이전 cost가 들어있다면 지우기
+            if (now.v == E)
+                break;
+
+            if (now.cost < dist[now.v])
                 continue;
 
             for (Node next : graph[now.v]) {
                 long bottleneck = Math.min(dist[now.v], next.cost);
-
                 if (dist[next.v] < bottleneck) {
                     dist[next.v] = bottleneck;
                     que.add(new Node(next.v, dist[next.v]));
@@ -38,7 +41,7 @@ public class Main {
             }
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -46,8 +49,8 @@ public class Main {
         N = Integer.parseInt(stz.nextToken());
         M = Integer.parseInt(stz.nextToken());
         stz = new StringTokenizer(br.readLine());
-        int S = Integer.parseInt(stz.nextToken());
-        int E = Integer.parseInt(stz.nextToken());
+        S = Integer.parseInt(stz.nextToken());
+        E = Integer.parseInt(stz.nextToken());
         graph = new ArrayList[N + 1];
         dist = new long[N + 1];
 
@@ -67,6 +70,5 @@ public class Main {
         dijkstra(S);
 
         System.out.println(dist[E]);
-
     }
 }
