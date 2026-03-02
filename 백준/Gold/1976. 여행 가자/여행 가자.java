@@ -1,55 +1,70 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class Main {
 
-    public static int[] parent;
+    public static int[] arr, rank;
+    static int N, M;
 
-    public static int getParent(int x){
-        if(parent[x] == x)
+    public static int find(int x) {
+        if (arr[x] == x)
             return x;
-        return parent[x] = getParent(parent[x]);
-    }
-
-    public static void unionParent(int a, int b){
-        a = getParent(a);
-        b = getParent(b);
-        if(a<b)
-            parent[b] = a;
         else
-            parent[a] = b;
+            return arr[x] = find(arr[x]);
     }
 
-    public static void main(String[] args) throws Exception{
+    public static void union(int x, int y) {
+        x = find(x);
+        y = find(y);
+
+        if (x == y)
+            return;
+
+        if (rank[x] > rank[y]) {
+            arr[y] = x;
+        } else if (rank[x] < rank[y]) {
+            arr[x] = y;
+        } else {
+            arr[x] = y;
+            rank[y]++;
+        }
+    }
+
+
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer stz;
         int N = Integer.parseInt(br.readLine());
         int M = Integer.parseInt(br.readLine());
+        arr = new int[N + 1];
+        rank = new int[N + 1];
 
-        parent = new int[N+1];
+        for (int i = 0; i <= N; i++) {
+            arr[i] = i;
+        }
 
-        for(int i=1;i<=N;i++)
-            parent[i] = i;
-
-        for(int k=1;k<=N;k++){
-            StringTokenizer stz = new StringTokenizer(br.readLine());
-            for(int i=1;i<=N;i++){
-                int con = Integer.parseInt(stz.nextToken());
-                if(con == 1){
-                    unionParent(k,i);
+        for (int i = 1; i <= N; i++) {
+            stz = new StringTokenizer(br.readLine());
+            for (int j = 1; j <= N; j++) {
+                int num = Integer.parseInt(stz.nextToken());
+                if (num == 1) {
+                    union(i, j);
                 }
             }
         }
 
-        StringTokenizer stz = new StringTokenizer(br.readLine());
-        int root = getParent(Integer.parseInt(stz.nextToken()));
-        for(int i=1;i<M;i++){
-            int k = Integer.parseInt(stz.nextToken());
-            if(getParent(k)!=getParent(root)){
+        stz = new StringTokenizer(br.readLine());
+        int a = Integer.parseInt(stz.nextToken());
+        a = find(a);
+        for (int i = 1, b = 0; i < M; i++) {
+            b = find(Integer.parseInt(stz.nextToken()));
+
+            if (a != b) {
                 System.out.println("NO");
                 return;
             }
         }
+
         System.out.println("YES");
     }
 }
