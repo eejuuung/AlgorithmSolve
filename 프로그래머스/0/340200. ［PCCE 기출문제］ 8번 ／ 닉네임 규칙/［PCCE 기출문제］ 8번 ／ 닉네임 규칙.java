@@ -19,7 +19,7 @@ class Solution {
             }
         }
         if(answer.length() < 3){
-            answer += "o".repeat(4-answer.length());
+            answer += "o";
         }
         if(answer.length() > 8){
             answer = answer.substring(0, 8);
