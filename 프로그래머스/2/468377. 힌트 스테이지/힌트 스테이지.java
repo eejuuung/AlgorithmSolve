@@ -46,7 +46,6 @@ class Solution {
         answer = Integer.MAX_VALUE;
 
         dfs(0, 0, new int[cost.length]);
-
         return answer;
     }
 }
